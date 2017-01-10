@@ -1,7 +1,7 @@
 {
-  "name": "blender-content-blocks",
-  "version": "3.3.0",
-  "description": "Blender Media Component",
+  "name": "@spatie/blender-content-blocks",
+  "version": "1.0.0-beta.1",
+  "description": "Blender content blocks component",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.dist.js",
