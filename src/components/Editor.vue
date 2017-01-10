@@ -36,16 +36,11 @@
 </template>
 
 <script>
-import Type from './forms/Type';
 import editor from '../mixins/editor';
 
 export default {
 
     mixins: [editor],
-
-    components: {
-        Type,
-    },
 
     types: {
         imageLeft: 'Afbeelding links',

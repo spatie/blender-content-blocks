@@ -1,5 +1,5 @@
 import Media from 'blender-media';
-import { Locale, PlainText, Redactor, Select2 } from '../components/forms';
+import { Locale, PlainText, Redactor, Type } from '../components/forms';
 import Vue from 'vue';
 
 export default {
@@ -11,7 +11,7 @@ export default {
         Locale,
         Redactor,
         PlainText,
-        Select2,
+        Type,
     },
 
     computed: {
