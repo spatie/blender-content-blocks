@@ -1,0 +1,7 @@
+{
+    "extends": "spatie/vue",
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
