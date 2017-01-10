@@ -2,10 +2,10 @@
     <div class="module__editor>">
         <div class="module__editor__column -stacked">
             <label>Type</label>
-            <select2
+            <type
                 v-model="block.type"
                 :options="types"
-            ></select2>
+            ></type>
             <locale
                 v-for="locale in locales"
                 :locale="locale"
@@ -36,12 +36,16 @@
 </template>
 
 <script>
-import $ from 'jquery';
+import Type from './forms/Type';
 import editor from '../mixins/editor';
 
 export default {
 
     mixins: [editor],
+
+    components: {
+        Type,
+    },
 
     types: {
         imageLeft: 'Afbeelding links',
@@ -61,12 +65,6 @@ export default {
         name: 'Titel',
         text: 'Tekst',
         image: 'Afbeelding',
-    },
-
-    mounted() {
-        $('[data-select]', this.$el)
-            .select2()
-            .on('change', e => this.block.type = e.target.value);
     },
 
     methods: {
