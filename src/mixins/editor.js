@@ -16,17 +16,21 @@ export default {
 
     computed: {
         types() {
+            if (this.data.types !== undefined) {
+                return this.data.types;
+            }
+
             return this.$options.types;
         },
-        
+
         translatableAttributes() {
             return this.$options.translatableAttributes;
         },
-        
+
         mediaLibraryCollections() {
             return this.$options.mediaLibraryCollections;
         },
-        
+
         locales() {
             return this.data.locales;
         },
