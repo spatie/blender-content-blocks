@@ -1,4 +1,4 @@
-import Media from 'blender-media';
+import Media from '@spatie/blender-media';
 import { Locale, PlainText, Redactor, Type } from '../components/forms';
 import Vue from 'vue';
 
