@@ -87,10 +87,9 @@ export default {
     },
 
     created() {
-
         if (! this.editor.types) {
-            throw new Error('Please provide a set of types for the content ' +
-                'blocks editor instance.');
+            throw new Error('Please provide a default set of types for the ' +
+                'content blocks editor instance.');
         }
 
         if (! this.editor.translatableAttributes) {
@@ -104,7 +103,7 @@ export default {
         }
 
         if (! this.block.type) {
-            this.block.type = Object.keys(this.editor.types)[0];
+            this.block.type = Object.keys(this.types)[0];
         }
 
         forEach(this.editor.translatableAttributes, (_, key) => {
@@ -118,7 +117,7 @@ export default {
         },
 
         type() {
-            return this.editor.types[this.block.type];
+            return this.types[this.block.type];
         },
 
         locales() {
@@ -131,6 +130,14 @@ export default {
 
         editor() {
             return Editor;
+        },
+
+        types() {
+            if (this.data.types !== undefined) {
+                return this.data.types;
+            }
+
+            return this.editor.types;
         },
 
         domId() {
