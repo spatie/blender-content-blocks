@@ -48,26 +48,25 @@ export default function init() {
 ></content-blocks>
 ```
 
-### Custom Editors
+### Custom Fields
 
-Custom editors are Vue components registered via the `registerEditor` method.
+Custom fields can be defined by passing `types`, `translatableAttributes` or `mediaLibraryCollections` to `data`. Here are the default values as a quick reference:
 
 ```js
-import { registerEditor } from '@spatie/blender-content-blocks';
-import MyEditor from './MyEditor';
-
-registerEditor('myEditor', MyEditor);
+{
+    types: {
+        imageLeft: 'Afbeelding links',
+        imageRight: 'Afbeelding rechts',
+    },
+    translatableAttributes: {
+        name: 'text',
+        text: 'redactor',
+    },
+    mediaLibraryCollections: {
+        image: 'image',
+    },
+}
 ```
-
-```html
-<content-blocks
-    collection="default"
-    editor="myEditor"
-    ...
-></content-blocks>
-```
-
-See `src/components/Editor.vue` for an example editor.
 
 ## Contributing
 
