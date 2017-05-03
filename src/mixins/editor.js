@@ -24,10 +24,18 @@ export default {
         },
 
         translatableAttributes() {
+            if (this.data.translatableAttributes !== undefined) {
+                return this.data.translatableAttributes;
+            }
+
             return this.$options.translatableAttributes;
         },
 
         mediaLibraryCollections() {
+            if (this.data.mediaLibraryCollections !== undefined) {
+                return this.data.mediaLibraryCollections;
+            }
+
             return this.$options.mediaLibraryCollections;
         },
 
