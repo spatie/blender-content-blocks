@@ -13,7 +13,7 @@
                 <div v-for="(type, field) in translatableAttributes">
                     <div
                         :is="getFieldType(type)"
-                        :label="getLabel(field)"
+                        :label="labels[field]"
                         v-model="block[field][locale]"
                     ></div>
                 </div>
@@ -22,7 +22,7 @@
                 v-for="(type, collection) in mediaLibraryCollections"
                 class="form__group"
             >
-                <label>{{ getLabel(collection) }}</label>
+                <label>{{ labels[collection] }}</label>
                 <media
                     :type="type"
                     :collection="collection"
@@ -62,10 +62,31 @@ export default {
         image: 'Afbeelding',
     },
 
+    created() {
+        this.ensureTranslatableAttributesExist();
+        this.ensureMediaLibraryCollectionsExist();
+    },
+
     methods: {
-        getLabel(key) {
-            return this.$options.labels[key];
+        ensureTranslatableAttributesExist() {
+            for (let attribute in this.translatableAttributes) {
+                if (! this.block.hasOwnProperty(attribute)) {
+                    this.block[attribute] = this.createTranslatableBlueprint();
+                }
+            }
         },
+        ensureMediaLibraryCollectionsExist() {
+            for (let collection in this.mediaLibraryCollections) {
+                if (! this.block.hasOwnProperty(collection)) {
+                    this.block[collection] = [];
+                }
+            }
+        },
+        createTranslatableBlueprint() {
+            return this.locales.reduce(
+                (acc, locale) => (acc[locale] = '', acc), {}
+            );
+        }
     },
 };
 </script>

@@ -39,6 +39,10 @@ export default {
             return this.$options.mediaLibraryCollections;
         },
 
+        labels() {
+            return { ...this.$options.labels, ...(this.data.labels || {}) };
+        },
+
         locales() {
             return this.data.locales;
         },
