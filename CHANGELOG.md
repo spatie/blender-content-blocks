@@ -2,6 +2,9 @@
 
 All Notable changes to `blender-content-blocks` will be documented in this file.
 
+## 1.1.0 - 2017-05-03
+- Added: Allow custom types, translated attributes and media collections via `data`
+
 ## 1.0.5 - 2017-03-28
 - Fixed: Look for `types` in `data` in the content block component
 
