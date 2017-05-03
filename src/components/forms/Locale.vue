@@ -1,7 +1,7 @@
 <template>
     <fieldset>
         <legend>
-            <div class="legend_lang">{{ locale }}<div>
+            <div class="legend_lang">{{ locale }}</div>
         </legend>
         <slot></slot>
     </fieldset>
