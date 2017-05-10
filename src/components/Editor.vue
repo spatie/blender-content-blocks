@@ -14,7 +14,8 @@
                     <div
                         :is="getFieldType(type)"
                         :label="labels[field]"
-                        v-model="block[field][locale]"
+                        :value="getTranslation(field, locale)"
+                        @input="setTranslation(field, locale, $event)"
                     ></div>
                 </div>
             </locale>
@@ -36,11 +37,20 @@
 </template>
 
 <script>
-import editor from '../mixins/editor';
+import Media from '@spatie/blender-media';
+import { Locale, PlainText, Redactor, Type } from './forms';
 
 export default {
 
-    mixins: [editor],
+    props: ['block', 'data'],
+
+    components: {
+        Media,
+        Locale,
+        PlainText,
+        Redactor,
+        Type,
+    },
 
     types: {
         imageLeft: 'Afbeelding links',
@@ -62,19 +72,60 @@ export default {
         image: 'Afbeelding',
     },
 
+    computed: {
+        types() {
+            return this.data.types || this.$options.types;
+        },
+
+        translatableAttributes() {
+            return this.data.translatableAttributes || this.$options.translatableAttributes;
+        },
+
+        mediaLibraryCollections() {
+            return this.data.mediaLibraryCollections || this.$options.mediaLibraryCollections;
+        },
+
+        labels() {
+            return { ...this.$options.labels, ...(this.data.labels || {}) };
+        },
+
+        locales() {
+            return this.data.locales;
+        },
+    },
+
     created() {
         this.ensureTranslatableAttributesExist();
         this.ensureMediaLibraryCollectionsExist();
     },
 
     methods: {
+        getFieldType(type) {
+            switch (type) {
+                case 'redactor':
+                    return 'redactor';
+                case 'text':
+                default:
+                    return 'plain-text';
+            }
+        },
+
+        getTranslation(key, locale) {
+            return this.block[key][locale];
+        },
+
+        setTranslation(key, locale, value) {
+            this.$set(this.block[key], locale, value);
+        },
+
         ensureTranslatableAttributesExist() {
             for (let attribute in this.translatableAttributes) {
                 if (! this.block.hasOwnProperty(attribute)) {
-                    this.block[attribute] = this.createTranslatableBlueprint();
+                    this.$set(this.block, attribute, this.createTranslatableBlueprint());
                 }
             }
         },
+
         ensureMediaLibraryCollectionsExist() {
             for (let collection in this.mediaLibraryCollections) {
                 if (! this.block.hasOwnProperty(collection)) {
@@ -82,11 +133,12 @@ export default {
                 }
             }
         },
+
         createTranslatableBlueprint() {
             return this.locales.reduce(
                 (acc, locale) => (acc[locale] = '', acc), {}
             );
-        }
+        },
     },
 };
 </script>

@@ -6,7 +6,6 @@
                     href="#"
                     @click.prevent="close"
                     class="module__column__icon"
-
                 >
                     <i class="fa fa-close"></i>
                 </a>
