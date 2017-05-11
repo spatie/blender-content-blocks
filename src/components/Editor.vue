@@ -24,28 +24,28 @@
                 class="form__group"
             >
                 <label>{{ labels[collection] }}</label>
-                <media
+                <blender-media
                     :type="type"
                     :collection="collection"
                     :uploadUrl="data.mediaUploadUrl"
                     :model="{ name: data.mediaModel, id: block.id }"
-                    v-model="block[collection]"
-                ></media>
+                    :value="block[collection]"
+                    @input="block[collection] = $event"
+                ></blender-media>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Media from '@spatie/blender-media';
-import { Locale, PlainText, Redactor, Type } from './forms';
+import { Locale, PlainText, BlenderMedia, Redactor, Type } from './forms';
 
 export default {
 
     props: ['block', 'data'],
 
     components: {
-        Media,
+        BlenderMedia,
         Locale,
         PlainText,
         Redactor,
