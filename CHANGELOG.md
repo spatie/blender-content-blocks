@@ -2,12 +2,9 @@
 
 All Notable changes to `blender-content-blocks` will be documented in this file.
 
-## 1.1.1 - 2017-05-22
-- Fixed: Ensure a valid type is always set
-- Fixed: Removed broken hash links
-
-## 1.1.0 - 2017-05-03
+## 1.1.0 - 2017-05-21
 - Added: Allow custom types, translated attributes and media collections via `data`
+- Fixed: Removed broken hash links
 
 ## 1.0.5 - 2017-03-28
 - Fixed: Look for `types` in `data` in the content block component
