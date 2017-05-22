@@ -27,7 +27,7 @@
         <td class="module__column -stretch" @click="open">
             <a
                 v-if="! isMarkedForRemoval"
-                :href="'#' + domId"
+                href="#"
                 @click="open"
                 class="js-open-content-block"
             >{{ name }}</a>
