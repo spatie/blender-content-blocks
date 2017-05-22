@@ -101,13 +101,7 @@ export default {
                 'for the content blocks editor instance.');
         }
 
-        if (! this.block.type) {
-            this.block.type = Object.keys(this.types)[0];
-        }
-
-        forEach(this.editor.translatableAttributes, (_, key) => {
-            this.initializeTranslations(key);
-        });
+        this.ensureBlockHasValidType();
     },
 
     computed: {
@@ -132,11 +126,7 @@ export default {
         },
 
         types() {
-            if (this.data.types !== undefined) {
-                return this.data.types;
-            }
-
-            return this.editor.types;
+            return this.data.types || this.editor.types;
         },
 
         domId() {
@@ -162,17 +152,14 @@ export default {
             Vue.set(this.block, 'markedForRemoval', false);
         },
 
-        initializeTranslations(key, defaultValue = '') {
-            let translations = this.block[key] || {};
+        ensureBlockHasValidType() {
+            for (let type in this.types) {
+                if (this.block.type === type) {
+                    return;
+                }
+            }
 
-            const blueprint = this.locales.reduce((translations, locale) => {
-                translations[locale] = defaultValue;
-                return translations;
-            }, {});
-
-            translations = pick({ ...blueprint, ...translations }, keys(blueprint));
-
-            Vue.set(this.block, key, translations);
+            this.block.type = Object.keys(this.types)[0];
         },
     },
 };
