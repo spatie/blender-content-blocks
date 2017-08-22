@@ -2,6 +2,9 @@
 
 All Notable changes to `blender-content-blocks` will be documented in this file.
 
+## 1.1.1 - 2017-08-22
+- Fixed: Button clicks weren't always prevented
+
 ## 1.1.0 - 2017-05-21
 - Added: Allow custom types, translated attributes and media collections via `data`
 - Fixed: Removed broken hash links
