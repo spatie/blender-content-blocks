@@ -28,7 +28,7 @@
             <a
                 v-if="! isMarkedForRemoval"
                 href="#"
-                @click="open"
+                @click.prevent="open"
                 class="js-open-content-block"
             >{{ name }}</a>
             <span v-else>
