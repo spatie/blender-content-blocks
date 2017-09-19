@@ -2,7 +2,7 @@
 
 All Notable changes to `blender-content-blocks` will be documented in this file.
 
-## 2.0.0 - 2017-09-19
+## 2.0.1 - 2017-09-19
 - Updated: compatibility with Redactor II 2.10
 
 ## 1.1.1 - 2017-08-22

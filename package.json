@@ -1,6 +1,6 @@
 {
   "name": "@spatie/blender-content-blocks",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Blender content blocks component",
   "main": "dist/index.js",
   "scripts": {
