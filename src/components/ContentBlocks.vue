@@ -15,7 +15,7 @@
         </table>
         <div class="module__actions">
             <button class="module__button" @click.prevent="createBlock">
-                Blok toevoegen
+                Add block
             </button>
             <button class="module__button--debug"
                 v-if="debug"

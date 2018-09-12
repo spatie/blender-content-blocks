@@ -2,6 +2,9 @@
 
 All Notable changes to `blender-content-blocks` will be documented in this file.
 
+## 2.0.2 - 2017-09-19
+- Changed: English labels
+
 ## 2.0.1 - 2017-09-19
 - Updated: compatibility with Redactor II 2.10
 

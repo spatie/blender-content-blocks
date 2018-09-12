@@ -106,7 +106,7 @@ export default {
 
     computed: {
         name() {
-            return this.block.name[this.data.contentLocale] || '[geen titel]';
+            return this.block.name[this.data.contentLocale] || '[untitled]';
         },
 
         type() {
